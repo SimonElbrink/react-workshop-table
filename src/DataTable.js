@@ -85,13 +85,18 @@ const DataTable = () => {
         console.log(person);
 
         return (
-            showDetails ?
-                <div>
-                    <h1>Person Information</h1>
-                    <p>ID: {person.id}</p>
-                    <p>Name: {person.firstName} {person.lastName}</p>
-                    <p>birthDate: {person.birthDate}</p>
-                    <button onClick={() => { setPerson({}); setShowDetails(false); }}>Hide</button>
+            showDetails ? // Display Student details if boolean is true otherwise render nothing.
+            
+                <div className='card'>
+                    <div className='card-header bg-info text-white'>
+                        <h1>Person Information</h1>
+                    </div>
+                    <div className='card-body'>
+                        <p>ID: {person.id}</p>
+                        <p>Name: {person.firstName} {person.lastName}</p>
+                        <p>birthDate: {person.birthDate}</p>
+                        <button className='btn btn-warning' onClick={() => { setPerson({}); setShowDetails(false); }}>Hide</button>
+                    </div>
                 </div>
                 :
                 <React.Fragment />

@@ -13,34 +13,34 @@ const TableHeader =
     </thead>
 
 
-const TableAction = (props) => <button>Details</button>
+const TableAction = (props) => <button className='btn btn-primary' >Details</button>
 
 const TableRow = (props) => {
-    const [tableRows, setTableRows] = useState([]); 
+    const [tableRows, setTableRows] = useState([]);
 
-    useEffect(()=> {
+    useEffect(() => {
         setTableRows(props.list)
-      }, []);
+    }, []);
 
-      return(
-          <tbody>
-              {
-                  tableRows.map((person) =>{
-                      const row =
-                      <tr key={person.id}>
-                          <td>{person.id}</td>
-                          <td>{person.firstName}</td>
-                          <td>{person.lastName}</td>
-                          <td>{person.age}</td>
-                          <td>
-                              <TableAction/>
-                          </td>
-                      </tr>
-                      return row;
-                  })
-              }
-          </tbody>
-      )
+    return (
+        <tbody>
+            {
+                tableRows.map((person) => {
+                    const row =
+                        <tr key={person.id}>
+                            <td>{person.id}</td>
+                            <td>{person.firstName}</td>
+                            <td>{person.lastName}</td>
+                            <td>{person.age}</td>
+                            <td>
+                                <TableAction />
+                            </td>
+                        </tr>
+                    return row;
+                })
+            }
+        </tbody>
+    )
 }
 
 const DataTable = () => {
@@ -71,11 +71,15 @@ const DataTable = () => {
     const [studentList, setStudentList] = useState(initValue);
 
     return (
-        <table>
-            <TableHeader />
-            <TableRow list={studentList}/>
+        <div className='container mt-5'>
+            <h1>List of People</h1>
+            <table className="table table-striped border">
+                <TableHeader />
+                <TableRow list={studentList} />
 
-        </table>
+            </table>
+        </div>
+
     );
 };
 
